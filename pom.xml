@@ -136,12 +136,13 @@
       <version>3.1.0</version>
       <configuration>
         <archive>
-          <manifest>
+        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+          <!-- <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
             <mainClass>com.example.CoffeeShopServerProgramming</mainClass>
-            <!-- <mainClass>com.mypackage.MyClass</mainClass>-->
-          </manifest>
+             <mainClass>com.mypackage.MyClass</mainClass>
+          </manifest>-->
         </archive>
       </configuration>
     </plugin>
