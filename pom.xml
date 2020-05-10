@@ -139,7 +139,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.example.CoffeeShopApp</mainClass>
+            <mainClass>com.example.CoffeeShopServerProgramming</mainClass>
             <!-- <mainClass>com.mypackage.MyClass</mainClass>-->
           </manifest>
         </archive>
