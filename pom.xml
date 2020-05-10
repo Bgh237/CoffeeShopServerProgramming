@@ -125,28 +125,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-jar-plugin</artifactId>
 			</plugin>
-			<plugin>
-      <!-- Build an executable JAR -->
+			 <plugin>
+       Build an executable JAR 
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-jar-plugin</artifactId>
-      <version>3.1.0</version>
+      
       <configuration>
         <archive>
         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          <!-- <manifest>
+           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
             <mainClass>com.example.CoffeeShopServerProgramming</mainClass>
              <mainClass>com.mypackage.MyClass</mainClass>
-          </manifest>-->
+          </manifest>
         </archive>
       </configuration>
     </plugin>
-			<!-- <plugin>
+			 <plugin>
 		        <groupId>com.heroku.sdk</groupId>
 		        <artifactId>heroku-maven-plugin</artifactId>
 		        <version>3.0.2</version>
