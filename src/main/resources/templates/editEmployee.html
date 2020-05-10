@@ -3,6 +3,7 @@
 <head>
 <title>Getting Started: Handling Form Submission</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<button>
@@ -15,19 +16,19 @@
 		<form th:object ="${employee}"th:action="@{../save}" action="#"	method="post">
 			<input type="hidden" id="id" th:field="*{id}" />
 			<label for="fname">First Name</label>
-			<input type ="text"id="fname" th:field="*{firstName}" />
+			<input type ="text"id="fname" th:field="*{firstName}" /><br>
 			<label for="surname">Surname</ label>
-			<input type	="text"id="lname" th:field="*{surname}" />
+			<input type	="text"id="lname" th:field="*{surname}" /><br>
 			<label for="email">Email</label>
-			<input type ="text"th:field="*{email}" />
+			<input type ="text"th:field="*{email}" /><br>
 			<label for="telno">Telephone Number</label>
-			<input type ="text"th:field="*{telno}" />
+			<input type ="text"th:field="*{telno}" /><br>
 			<label for="address">Address</label>
-			<input type ="text"th:field="*{address}" />
+			<input type ="text"th:field="*{address}" /><br>
 			<label for="role">Job Role</label>
-			<input type ="text"th:field="*{role}" />
+			<input type ="text"th:field="*{role}" /><br>
 			<label for="hourlyRate">Hourly Rate</label>
-			<input type ="text"th:field="*{hourlyRate}" />
+			<input type ="text"th:field="*{hourlyRate}" /><br>
 			<input type ="submit"value="Save"></input>
 		</form>
 		

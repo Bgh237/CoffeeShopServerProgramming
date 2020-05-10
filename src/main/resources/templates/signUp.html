@@ -3,6 +3,7 @@
 <head>
 <title>Getting Started: Handling Form Submission</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Add employee</h1>
@@ -18,12 +19,7 @@
 			<input type ="text"th:field="*{telno}" /><br>
 			<label for="address">Address</label>
 			<input type ="text"th:field="*{address}" /><br>
-			<!-- <label for="role">Job Role</label>
-			<input type="hidden" th:value="${question.id}" th:attr="CUSTOMER" />-->
 			<input type ="hidden" th:field="*{role}" />
-			<!-- <label for="hourlyRate">Hourly Rate</label><br>
-			<input type ="text"th:field="*{hourlyRate}" /><br>-->
-			
 			<label for="username">Username</label>
 			<input type ="text"th:field="*{username}" /><br>
 			<label for="password">Password</label>

@@ -3,6 +3,7 @@
 <head>
 <title>Getting Started: Handling Form Submission</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<button>
@@ -14,15 +15,15 @@
 	<div>
 		<form th:object ="${item}"th:action="@{saveitem}" action="#"	method="post">
 			<label for="name">Name</label>
-			<input type ="text"id="name" th:field="*{name}" />
+			<input type ="text"id="name" th:field="*{name}" /><br>
 			<label for="desription">Description</ label>
-			<input type	="text"id="desc" th:field="*{description}" />
+			<input type	="text"id="desc" th:field="*{description}" /><br>
 			<label for="price">Price</label>
-			<input type ="text"th:field="*{price}" />
+			<input type ="text"th:field="*{price}" /><br>
 			<label for="catlist">Category</label>
 			 <select id="catlist" th:field="*{category}" class="form-control">
        			<option th:each="category: ${categories}" th:value="${category.catId}" th:text="${category.category}"></option>
-    		</select>
+    		</select><br>
 			<input type ="submit"value="Save"></input>
 		</form>
 		<button><a href="/menu">Cancel</a></button>
