@@ -29,7 +29,7 @@ public class CofffeeShopServerProgrammingApplication {
 	      return builder.sources(CofffeeShopServerProgrammingApplication.class);
 	  }
 
-	@Bean 
+	/*@Bean 
 	public CommandLineRunner demo(EmployeeRepository erepository, ItemRepository irepository, ItemCategoryRepository icrepository, RotaRepository rrepository) {
 		return (args) -> {
 			Employee emp1 = new Employee("Simon", "Barry", "simonb@cafe.com", "0445623985", "123 Neverland Road", "MANAGER", 100.00, "sbarry", "$2y$12$KErdwjIYRrB2WrhsKUF5M.Pb9PtuWyWV4amTRVtrWmOMuW8TSZCT.");
@@ -70,5 +70,5 @@ public class CofffeeShopServerProgrammingApplication {
 			
 			
 		};
-	}
+	}*/
 }
