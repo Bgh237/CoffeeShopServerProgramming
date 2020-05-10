@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<h1>Add To Rota</h1>
+	<div>
+		<form th:object ="${rota}"th:action="@{saverota}" action="#" method="post">
+			<label for="emplist">Employee</label>
+			 <select id="emplist" th:field="*{employee}" class="form-control">
+       			<option th:if="${employee.role == 'MANAGER' or employee.role == 'EMPLOYEE'}"th:each="employee: ${employees}" th:value="${employee.id}" th:text="${employee.firstName} + ' ' + ${employee.surname}"></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="mon">Monday</label>
+			<input type ="text"id="mon" th:field="*{mon}" /><br>
+			<label for="tue">Tuesday</ label>
+			<input type	="text"id="tue" th:field="*{tue}" /><br>
+			<label for="wed">Wednesday</label>
+			<input type ="text"th:field="*{wed}" /><br>
+			<label for="thur">Thursday</label>
+			<input type ="text"th:field="*{thur}" /><br>
+			<label for="fri">Friday</label>
+			<input type ="text"th:field="*{fri}" /><br>
+			<label for="sat">Saturday</label>
+			<input type ="text"th:field="*{sat}" /><br>
+			<label for="sun">Sunday</label>
+			<input type ="text"th:field="*{sun}" /><br>
+			<input type ="submit"value="Save"></input>
+		</form>
+		<button><a href="/rotas">Cancel</a></button>
+	
+	</div>
+</body>
+</html>

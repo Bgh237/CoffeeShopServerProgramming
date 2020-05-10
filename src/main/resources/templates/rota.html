@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<h1>Employee Weekly Rota</h1>
+	<table class="table table-striped">
+	<tr>
+		<th>Name</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+		<th>Sunday</th>
+	</tr>
+	<tr th:each="rota : ${rotas}">
+		<td th:text="${rota.employee.firstName} + ' ' + ${rota.employee.surname}"></td>
+		<td th:text="${rota.mon}"></td>
+		<td th:text="${rota.tue}"></td>
+		<td th:text="${rota.wed}"></td>
+		<td th:text="${rota.thur}"></td>
+		<td th:text="${rota.fri}"></td>
+		<td th:text="${rota.sat}"></td>
+		<td th:text="${rota.sun}"></td>
+		<td sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/editrota/{id}(id=${rota.id})}">Edit</a></td>
+		<td sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/deleterota/{id}(id=${rota.id})}">Delete</a></td>
+	</tr>
+	</table>
+	<button sec:authorize="hasAuthority('MANAGER')"><a href="/addrota">Add Employee</a></button>
+	<button><a href="/">Back to Home</a></button>
+	
+</body>
+</html>

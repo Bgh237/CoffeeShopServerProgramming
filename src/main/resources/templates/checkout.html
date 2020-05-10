@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1 th:text="'Thanks for your order. Your order Number is ' + ${orderNo}"></h1>
+	<button><a href="/menu">Back to menu</a></button>
+	<button><a href="/">Back to Home</a></button>
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	
+</body>
+</html>

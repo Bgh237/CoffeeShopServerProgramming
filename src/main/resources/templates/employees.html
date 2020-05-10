@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<table class="table table-striped">
+	<h1>List of Managers</h1>
+	<tr>
+		<th>First Name</th>
+		<th>Surname</th>
+		<th>Email</th>
+		<th>Telephone Number</th>
+		<th>Address</th>
+		<th>Job Role</th>
+		<th>Hourly Rate</th>
+	</tr>
+	<tr th:if="${employee.role == 'MANAGER'}" th:each="employee : ${employees}">
+		<td th:text="${employee.firstName}"></td>
+		<td th:text="${employee.surname}"></td>
+		<td th:text="${employee.email}"></td>
+		<td th:text="${employee.telno}"></td>
+		<td th:text="${employee.address}"></td>
+		<td th:text="${employee.role}"></td>
+		<td th:text="${employee.hourlyRate}"></td>
+		<td><a th:href="@{/edit/{id}(id=${employee.id})}">Edit</a></td>
+		<td><a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a></td>
+	</tr>
+	</table>
+	
+	<table class="table table-striped">
+	<h1>List of employees</h1>
+	<tr>
+		<th>First Name</th>
+		<th>Surname</th>
+		<th>Email</th>
+		<th>Telephone Number</th>
+		<th>Address</th>
+		<th>Job Role</th>
+		<th>Hourly Rate</th>
+	</tr>
+	<tr th:if="${employee.role == 'EMPLOYEE'}" th:each="employee : ${employees}">
+		<td th:text="${employee.firstName}"></td>
+		<td th:text="${employee.surname}"></td>
+		<td th:text="${employee.email}"></td>
+		<td th:text="${employee.telno}"></td>
+		<td th:text="${employee.address}"></td>
+		<td th:text="${employee.role}"></td>
+		<td th:text="${employee.hourlyRate}"></td>
+		<td><a th:href="@{/edit/{id}(id=${employee.id})}">Edit</a></td>
+		<td><a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a></td>
+	</tr>
+	</table>
+	<button><a href="/add">Add Employee</a></button>
+	<button><a href="/home">Back to Home</a></button>
+</body>
+</html>

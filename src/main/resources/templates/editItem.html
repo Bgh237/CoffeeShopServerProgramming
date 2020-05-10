@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<h1>Edit Item</h1>
+	<div>
+		<form th:object ="${item}"th:action="@{../saveitem}" action="#"	method="post">
+			<input type="hidden" id="id" th:field="*{itemId}" />
+			<label for="name">Name</label>
+			<input type ="text"id="name" th:field="*{name}" />
+			<label for="description">Description</ label>
+			<input type	="text"id="desc" th:field="*{description}" />
+			<label for="price">Price</label>
+			<input type ="text"th:field="*{price}" />
+			<label for="catlist">Category</label>
+			<select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.catId}" th:text="${category.category}"></option>
+    		</select>
+			<input type ="submit"value="Save"></input>
+		</form>
+		
+		<button><a href="/items">Cancel</a></button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<h1>Edit Rota</h1>	
+	
+	<div>
+		<form th:object ="${rota}"th:action="@{../saverota}" action="#"	method="post">
+			<input type="hidden" id="id" th:field="*{id}" />
+			<label for="mon">Monday</label>
+			<input type ="text"id="mon" th:field="*{mon}" />
+			<label for="tue">Tuesday</ label>
+			<input type	="text"id="tue" th:field="*{tue}" />
+			<label for="wed">Wednesday</label>
+			<input type ="text"th:field="*{wed}" />
+			<label for="thur">Thursday</label>
+			<input type ="text"th:field="*{thur}" />
+			<label for="fri">Friday</label>
+			<input type ="text"th:field="*{fri}" />
+			<label for="sat">Saturday</label>
+			<input type ="text"th:field="*{sat}" />
+			<label for="sun">Sunday</label>
+			<input type ="text"th:field="*{sun}" />
+			<input type ="submit"value="Save"></input>
+		</form>
+		
+		<button><a href="/rotas">Cancel</a></button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<h1>Welcome to the Coffee Shop App [[${#httpServletRequest.remoteUser}]]!</h1>
+	
+	<button sec:authorize="hasAnyAuthority('EMPLOYEE', 'MANAGER')"><a th:href="@{/menu}">Take an Order</a></button>
+	<button sec:authorize="hasAnyAuthority('EMPLOYEE', 'MANAGER')"><a th:href="@{/rotas}">Check your Rota</a></button>
+	<button sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/employees}">List of Employees</a></button>
+	<button sec:authorize="hasAuthority('CUSTOMER')"><a th:href="@{/menu}">Place an Order</a></button>
+	
+	
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Getting Started: Handling Form Submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<button>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+		</form>
+	</button>
+	<h1>Menu</h1>
+	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	
+	<h2>Food</h2>
+	<table class="table table-striped">
+		<thead>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th sec:authorize="hasAuthority('MANAGER')"> </th>
+			<th sec:authorize="hasAuthority('MANAGER')"> </th>
+			<th></th>
+		</thead>
+	
+	<tr th:if="${item.category.category == 'Food'}" th:each="item : ${items}">
+		<td th:text="${item.name}"></td>
+		<td th:text="${item.description}"></td>
+		<td th:text="${item.price}"></td>
+		<td sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/edititem/{id}(id=${item.itemId})}">Edit</a></td>
+		<td sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/deleteitem/{id}(id=${item.itemId})}">Delete</a></td>
+		<td><a th:href="@{/addtoorder/{id}(id=${item.itemId})}">Add to Order</a></td>
+		<!-- <td><a th:href="@{/addtoorder/{id}(id=${item.itemId})}">Add to Order</a></td>		-->
+	</tr>
+	</table>
+	
+	
+	<h2>Drinks</h2>
+	<table class="table table-striped">
+		<thead>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th sec:authorize="hasAuthority('MANAGER')"> </th>
+			<th sec:authorize="hasAuthority('MANAGER')"> </th>
+			<th></th>
+		</thead>
+	
+	<tr th:if="${item.category.category == 'Drink'}" th:each="item : ${items}">
+		<td th:text="${item.name}"></td>
+		<td th:text="${item.description}"></td>
+		<td th:text="${item.price}"></td>
+		<td sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/edititem/{id}(id=${item.itemId})}">Edit</a></td>
+		<td sec:authorize="hasAuthority('MANAGER')"><a th:href="@{/deleteitem/{id}(id=${item.itemId})}">Delete</a></td>	
+		<td>
+			<!-- <label for="qty">Quantity</label>
+			<input type ="text"th:value="*{qty}" /> -->
+			<a th:href="@{/addtoorder/{id}(id=${item.itemId})}">Add to Order</a>
+		</td>	
+	</tr>
+	</table>
+	<button sec:authorize="hasAuthority('MANAGER')"><a href="/additem">Add Item</a></button>
+	<button><a href="/cart">View Order</a></button>
+	
+	<button><a href="/">Back to Home</a></button>
+</body>
+</html>
