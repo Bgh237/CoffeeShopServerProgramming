@@ -29,7 +29,7 @@ public class CofffeeShopServerProgrammingApplication {
 	      return builder.sources(CofffeeShopServerProgrammingApplication.class);
 	  }
 
-	//Used to add some data into the app
+	//Used to add some data into the app 
 	@Bean 
 	public CommandLineRunner demo(EmployeeRepository erepository, ItemRepository irepository, ItemCategoryRepository icrepository, RotaRepository rrepository) {
 		return (args) -> {
