@@ -41,7 +41,7 @@ public class Order {
         }
         return sum;
     }
- 
+    
     @Transient
     public int getNumberOfProducts() {
         
