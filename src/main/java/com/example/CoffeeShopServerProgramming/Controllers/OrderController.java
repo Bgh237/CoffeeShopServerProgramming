@@ -84,6 +84,7 @@ public class OrderController {
 	//Confirm the order
 	@GetMapping(value = "/checkout")
 	public String checkout(Model model) {
+		
 		model.addAttribute("orderNo", order.getOrderId());
 		oservice.update(order);
 		order = new Order();
