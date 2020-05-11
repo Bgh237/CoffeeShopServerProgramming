@@ -38,8 +38,4 @@ public class OrderItemPK implements Serializable {
 	public void setItem(Item item2) {
 		this.item = item2;
 	}
-    
-    
- 
-    // standard getters and setters
 }
