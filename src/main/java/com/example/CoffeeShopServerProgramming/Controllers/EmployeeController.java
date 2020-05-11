@@ -137,6 +137,7 @@ public class EmployeeController {
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/editrota/{id}", method = RequestMethod.GET)
 	public String editRota(@PathVariable("id") Long rotaId, Model model) {
+		model.addAttribute("employees", erepository.findAll());
 		model.addAttribute("rota", rrepository.findById(rotaId));
 		return "editRota";
 	}
@@ -145,7 +146,7 @@ public class EmployeeController {
 	@RequestMapping(value="/saverota", method = RequestMethod.POST)
 	public String saveRota(Rota rota){
 		rrepository.save(rota);
-		return "redirect:../rotas";
+		return "redirect:rotas";
 	}
 
 }
