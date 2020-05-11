@@ -19,6 +19,8 @@ import com.example.CoffeeShopServerProgramming.service.OrderItemService;
 @Transactional
 public class OrderItemServiceImpl implements OrderItemService {
 
+	//The following code is the implementation of my service used in some of my controllers
+	
 	@Autowired
 	private OrderItemRepository oirepository;
 
@@ -36,14 +38,5 @@ public class OrderItemServiceImpl implements OrderItemService {
 		return oirepository.findAll();
 	}
 
-//new
-	@Override
-	public void update(OrderItem orderItem) {
-		this.oirepository.save(orderItem);
-		
-	}
-	
-	
-	
 
 }

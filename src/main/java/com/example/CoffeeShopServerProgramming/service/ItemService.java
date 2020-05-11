@@ -11,6 +11,8 @@ import com.example.CoffeeShopServerProgramming.model.Item;
 @Transactional
 public interface ItemService {
 	
+//Service for my items	
+	
 	Iterable<Item> getAllItems();
 	
 	Item getItem(long id);

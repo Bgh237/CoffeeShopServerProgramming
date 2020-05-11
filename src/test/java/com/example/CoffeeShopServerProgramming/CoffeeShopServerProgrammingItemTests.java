@@ -22,7 +22,7 @@ import com.example.CoffeeShopServerProgramming.repositories.ItemRepository;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CoffeeShopServerProgrammingItemTests {
-
+	//The following is code used to test that I can search, add and delete items in my app
 	@Autowired
 	private ItemRepository irepository;
 	
@@ -49,7 +49,7 @@ public class CoffeeShopServerProgrammingItemTests {
 	}
 	
 	@Test
-	public void deleteEmployee() {
+	public void deleteItem() {
 		Item item = new Item("Salad", "Greek Salad", 10.00, new ItemCategory ("Salad"));
 		irepository.delete(item);
 		assertThat(item.getItemId()).isNull();

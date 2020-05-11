@@ -84,10 +84,6 @@ public class OrderController {
 	//Confirm the order
 	@GetMapping(value = "/checkout")
 	public String checkout(Model model) {
-		//Saves each item in the orderItems list to the orderItems repository
-		for(OrderItem item : orderItems) {
-			oiservice.update(item);
-		}
 		model.addAttribute("orderNo", order.getOrderId());
 		oservice.update(order);
 		order = new Order();

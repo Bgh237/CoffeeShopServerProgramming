@@ -25,11 +25,13 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CoffeeShopServerProgrammingSecurityTests {
+	//The following code checks that my security features work as they should
   @Autowired
   private WebApplicationContext context;
 
   private MockMvc mvc;
 
+  //Create a mock MVC
   @Before
   public void setup() {
     mvc = MockMvcBuilders
@@ -39,6 +41,7 @@ public class CoffeeShopServerProgrammingSecurityTests {
             .build();
   }
 
+  //Test that the login page can be reached by all
   @Test
   public void loginAvailableForAll() throws Exception {
     mvc
@@ -48,7 +51,7 @@ public class CoffeeShopServerProgrammingSecurityTests {
     
   // The succesful version of this would require me to put the logins so I have left it off but 
   // to test just add the correct username and password and change unauthenticated to authenticated
-  
+  //Test that checks a user cannot login without the correct credentials
   @Test
 	public void testUnsuccessfulLogin() throws Exception {
 		mvc
@@ -56,12 +59,14 @@ public class CoffeeShopServerProgrammingSecurityTests {
 			.andExpect(unauthenticated());
 	}
   
+  //Tests that a page is viewable without authentication
   @Test
 	public void testUserNeedsToBeAuthenticated() throws Exception {
 		mvc.perform(get("/menu")).andDo(print())
 			.andExpect(unauthenticated());
 	}
   
+  //Tests that the MANAGER can view the employees page
   @Test
   @WithMockUser(authorities={"MANAGER"})
 	public void testUserIsAuthorised() throws Exception {
@@ -69,24 +74,15 @@ public class CoffeeShopServerProgrammingSecurityTests {
 			.andExpect(status().isOk());
 	}
   
+  //Tests that the EMPLOYEE cannot access the list of employees
   @Test
   @WithMockUser(roles={"EMPLOYEE"})
 	public void testUserIsNotAuthorised() throws Exception {
 		mvc.perform(get("/employees")).andDo(print())
 			.andExpect(status().isForbidden());
 	}
-
-  @Test
-	@WithMockUser(roles={"EMPLOYEE"})
-	public void testRotaRest() throws Exception {
-		mvc
-			.perform(get("/rota"))
-			.andExpect(status().isOk())
-			.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-			.andExpect(content().string(containsString("mon")));
-	}
-
-
+  
+ //Test that the correct information is shown when a user fails the login
   @Test
   public void invalidLoginDenied() throws Exception {
     String loginErrorUrl = "/login?error";

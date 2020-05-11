@@ -20,7 +20,8 @@ import com.example.CoffeeShopServerProgramming.repositories.EmployeeRepository;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CoffeeShopServerProgrammingUserTests {
-
+	//The following code is used to test that I can search add and delete employees
+	
 	@Autowired
 	private EmployeeRepository erepository;
 	

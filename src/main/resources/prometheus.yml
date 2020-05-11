@@ -1,3 +1,6 @@
+#The following config is to enable prometheus to access my app and get the metrics so they can be viewed in graph form
+
+
 # my global config
 global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.

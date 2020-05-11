@@ -22,6 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CoffeeShopServerProgrammingRestTests {
+	//The following code checks that the custom api endpoints I have created are running and return JSON
 	@Autowired
 	  private WebApplicationContext context;
 

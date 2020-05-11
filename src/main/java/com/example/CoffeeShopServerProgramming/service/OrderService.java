@@ -14,6 +14,8 @@ import com.example.CoffeeShopServerProgramming.model.Order;
 @Transactional
 public interface OrderService {
 	
+	//Service for my orders
+	
 	Iterable<Order> getAllOrders();
 	
 	Order create(Order order);

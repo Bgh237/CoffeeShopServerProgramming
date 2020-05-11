@@ -19,7 +19,7 @@ import com.example.CoffeeShopServerProgramming.repositories.RotaRepository;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CoffeeShopServerProgrammingRotaTests {
-
+	//The following code is used to test that I can add and delete from the rota
 	@Autowired
 	private RotaRepository rrepository;
 	

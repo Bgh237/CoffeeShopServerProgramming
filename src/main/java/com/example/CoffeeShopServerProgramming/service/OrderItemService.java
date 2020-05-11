@@ -12,12 +12,12 @@ import com.example.CoffeeShopServerProgramming.model.OrderItem;
 @Service
 @Transactional
 public interface OrderItemService {
+
+	//Service for my order items
 	
 	OrderItem add(OrderItem item);
 	
 	Iterable<OrderItem> getAllOrderItems();
-	
-	void update(OrderItem orderItem);
 	
 }
 

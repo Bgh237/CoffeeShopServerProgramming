@@ -15,6 +15,8 @@ import com.example.CoffeeShopServerProgramming.service.ItemService;
 @Service
 @Transactional
 public class ItemServiceImpl implements ItemService {
+	
+	//The following code is the implementation of my service used in some of my controllers
 	@Autowired
     private ItemRepository irepository;
  

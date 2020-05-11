@@ -21,6 +21,9 @@ import com.example.CoffeeShopServerProgramming.service.OrderService;
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService {
+	
+	//The following code is the implementation of my service used in some of my controllers
+	
 	@Autowired
 	private OrderRepository orepository;
 	

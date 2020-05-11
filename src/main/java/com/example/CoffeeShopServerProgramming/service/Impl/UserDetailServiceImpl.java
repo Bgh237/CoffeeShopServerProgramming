@@ -15,6 +15,8 @@ import com.example.CoffeeShopServerProgramming.repositories.EmployeeRepository;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
+	//The following service is used to get the current user and create the authority depending on their role
+	
 	private final EmployeeRepository repository;
 	
 	@Autowired
