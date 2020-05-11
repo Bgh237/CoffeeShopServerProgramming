@@ -44,7 +44,8 @@ public class Order {
  
     @Transient
     public int getNumberOfProducts() {
-        return this.orderItems.size();
+        
+    	return this.orderItems.size();
     }
 
 	public Long getOrderId() {
@@ -60,7 +61,7 @@ public class Order {
 	}
 
 	public void setDateCreated(LocalDate now) {
-		this.dateCreated = dateCreated;
+		this.dateCreated = now;
 	}
 
 	public List<OrderItem> getOrderItems() {
