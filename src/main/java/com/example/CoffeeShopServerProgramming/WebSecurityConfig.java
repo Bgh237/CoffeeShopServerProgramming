@@ -37,15 +37,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailServiceImpl userDetailsService;
 	
+	//The following code is used to configure the http
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	 http
+    	 //set up app to be deployed in heroku with https
     	 .requiresChannel()
          .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
          .requiresSecure()
+         //authorise use of some pages without login
          .and()
          .authorizeRequests()
          .antMatchers("/css/**", "/login", "/signup", "/save").permitAll()
+         //Only allow access to the actuator shutdown method to users with the MANAGER authority and others open to everyone
          .requestMatchers(EndpointRequest.to(ShutdownEndpoint.class))
          .hasAuthority("MANAGER")
          .requestMatchers(EndpointRequest.toAnyEndpoint())
@@ -60,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          .and()
       .formLogin()
       .loginPage("/login")
-           .defaultSuccessUrl("/")//needs to changed to home when home page is created
+           .defaultSuccessUrl("/")
            .permitAll()
            .and()
        .logout()
@@ -69,6 +74,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          .httpBasic();
     	
     }
+    
+    //The following is used to encrypt the passwords with Bcrypt
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -81,7 +88,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return bCryptPasswordEncoder;
     }
     
-
+    //Add some users
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -91,11 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("manager")
                 .roles("MANAGER", "EMPLOYEE")
                 .build();
-    	/*UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("user")
-                .roles("USER")
-                .build();*/
+    	
 
     	users.add(user);
     	

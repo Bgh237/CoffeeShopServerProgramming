@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+//The following class is used create an item included in a specific order. Included so that the database
 @Entity
 public class OrderItem {
 

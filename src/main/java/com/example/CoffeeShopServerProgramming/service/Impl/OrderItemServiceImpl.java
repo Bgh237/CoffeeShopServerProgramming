@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.CoffeeShopServerProgramming.model.Order;
 import com.example.CoffeeShopServerProgramming.model.OrderItem;
 import com.example.CoffeeShopServerProgramming.repositories.OrderItemRepository;
 import com.example.CoffeeShopServerProgramming.service.OrderItemService;
@@ -33,6 +34,13 @@ public class OrderItemServiceImpl implements OrderItemService {
 	public Iterable<OrderItem> getAllOrderItems() {
 		// TODO Auto-generated method stub
 		return oirepository.findAll();
+	}
+
+//new
+	@Override
+	public void update(OrderItem orderItem) {
+		this.oirepository.save(orderItem);
+		
 	}
 	
 	

@@ -18,7 +18,10 @@ public class DatabaseConfig {
 
   @Bean
   public BasicDataSource dataSource() throws URISyntaxException {
-      String dbUrl = System.getenv("JDBC_DATABASE_URL");
+     
+	  //The following code is used to connect to the Postgresql database on heroku
+	  
+	  String dbUrl = System.getenv("JDBC_DATABASE_URL");
       String username = System.getenv("JDBC_DATABASE_USERNAME");
       String password = System.getenv("JDBC_DATABASE_PASSWORD");
 
@@ -29,10 +32,5 @@ public class DatabaseConfig {
 
       return basicDataSource;
   }
-  /*@Bean
-  public DataSource dataSource() {
-      HikariConfig config = new HikariConfig();
-      config.setJdbcUrl(dbUrl);
-      return new HikariDataSource(config);
-  }*/
+ 
 }

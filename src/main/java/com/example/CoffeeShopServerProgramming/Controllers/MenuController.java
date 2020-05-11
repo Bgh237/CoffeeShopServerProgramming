@@ -26,6 +26,7 @@ public class MenuController {
 	@Autowired
 	private ItemCategoryRepository icrepository;
 	
+	//View the menu
 	@RequestMapping(value="/menu")
 	public String menu(Model model) {
 		Order order = new Order();
@@ -34,6 +35,8 @@ public class MenuController {
 		return "menu";
 	}  
 	
+	//Add an item to the menu
+	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/additem")
 	public String addFood(Model model) {
 		model.addAttribute("item", new Item());
@@ -41,12 +44,14 @@ public class MenuController {
 		return "addItem";
 	}
 	
+	//Save an item
 	@RequestMapping(value="/saveitem", method = RequestMethod.POST)
 	public String saveFood(Item item){
 		irepository.save(item);
 		return "redirect:menu";
 	}
 	
+	//Delete an Item. Can only be done by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value = "/deleteitem/{id}", method = RequestMethod.GET)
 	public String deleteItem(@PathVariable("id") Long itemId, Model model) {
@@ -54,6 +59,7 @@ public class MenuController {
 		return "redirect:../menu";
 	}
 	
+	//Edit an Item in the menu. Can only be done by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/edititem/{id}", method = RequestMethod.GET)
 	public String editFood(@PathVariable("id") Long itemId, Model model) {

@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+//This class creates a composite key for the database as the order id and item id together make the Primary Key
 @Embeddable
 public class OrderItemPK implements Serializable {
 	

@@ -35,6 +35,8 @@ public class RESTController {
 	
 	@Autowired
 	private RotaRepository rrepo;
+
+	//Below is an alternative mapping for the REST APIs
 	
 	@RequestMapping(value="/employee", method= RequestMethod.GET)
 	public @ResponseBody List<Employee> employeeRest() {
@@ -61,7 +63,7 @@ public class RESTController {
 		return (List<Rota>) rrepo.findAll();
 	}
 	
-	@RequestMapping(value="/order", method= RequestMethod.GET)
+	/*@RequestMapping(value="/order", method= RequestMethod.GET)
 	public @ResponseBody List<Order> orderRest() {
 		return (List<Order>) orepo.findAll();
 	}
@@ -69,6 +71,6 @@ public class RESTController {
 	@RequestMapping(value="/order/{id}", method = RequestMethod.GET)
 	public @ResponseBody Optional<Order> findOrderRest(@PathVariable("id") Long orderId) {
 		return orepo.findById(orderId);
-	}
+	}*/
 
 }

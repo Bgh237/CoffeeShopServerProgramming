@@ -46,6 +46,7 @@ public class EmployeeController {
 	      throw new RuntimeException("test exception");
 	  }
 	
+	 //signup page for customers. Role is automatically set to CUSTOMER and cannot be changed
 	@RequestMapping(value="/signup")
 	public String addCustomer(Model model) {
 		Employee cust = new Employee();
@@ -54,18 +55,20 @@ public class EmployeeController {
 		return "signUp";
 	}
 	
+	//Custom login page
 	@RequestMapping(value="/login")
 	public String login(Model model) {
 		return "login";
 	} 
 	
+	//Home page
 	@RequestMapping(value="/")
 	public String homePage() {
 		return "home";
 	} 
 	
 
-	
+	//List of employees can only be viewed by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/employees")
 	public String employeeList(Model model) {
@@ -73,6 +76,7 @@ public class EmployeeController {
 		return "employees";
 	}
 	
+	//Add employees can only be viewed by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/add")
 	public String addEmployee(Model model) {
@@ -80,6 +84,7 @@ public class EmployeeController {
 		return "addEmployee";
 	}
 	
+	//Save employee
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String save(Employee employee){
 		employee.setPasswordHash(crypt.encode(employee.getPasswordHash()));
@@ -87,6 +92,7 @@ public class EmployeeController {
 		return "redirect:employees";
 	}
 	
+	//Delete Employee. Can only be done by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteEmployee(@PathVariable("id") Long employeeId, Model model) {
@@ -94,6 +100,7 @@ public class EmployeeController {
 		return "redirect:../employees";
 	}
 	
+	//Edit Employee. Can only be done by Manager
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
 	public String editEmployee(@PathVariable("id") Long employeeId, Model model) {
@@ -101,6 +108,7 @@ public class EmployeeController {
 		return "editEmployee";
 	}
 	
+	//View work rota. Can only be viewed by MANAGER and EMPLOYEE. CUSTOMER cannot view this
 	@PreAuthorize("hasAnyAuthority('MANAGER', 'EMPLOYEE')")
 	@RequestMapping(value="/rotas")
 	public String rota(Model model) {
@@ -108,6 +116,7 @@ public class EmployeeController {
 		return "rota";
 	}  
 	
+	//Add an employee to the rota. Can only be done by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/addrota")
 	public String addRota(Model model) {
@@ -116,6 +125,7 @@ public class EmployeeController {
 		return "addRota";
 	}
 	
+	//Delete a record from the Rota. Can only be done by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value = "/deleterota/{id}", method = RequestMethod.GET)
 	public String deleteRota(@PathVariable("id") Long rotaId, Model model) {
@@ -123,6 +133,7 @@ public class EmployeeController {
 		return "redirect:../rota";
 	}
 	
+	//Edit the rota. Can only be done by MANAGER
 	@PreAuthorize("hasAuthority('MANAGER')")
 	@RequestMapping(value="/editrota/{id}", method = RequestMethod.GET)
 	public String editRota(@PathVariable("id") Long rotaId, Model model) {
@@ -130,6 +141,7 @@ public class EmployeeController {
 		return "editRota";
 	}
 	
+	//Save a new entry to the rota
 	@RequestMapping(value="/saverota", method = RequestMethod.POST)
 	public String saveRota(Rota rota){
 		rrepository.save(rota);

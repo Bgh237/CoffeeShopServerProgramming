@@ -39,14 +39,23 @@ public class OrderController {
 	private Order order = new Order();
 	private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 	
+	//Add an item to an order
 	@RequestMapping(value = "/addtoorder/{id}", method = RequestMethod.GET)
 	public String addToOrder(@PathVariable("id") Long itemId) {
+		order.setDateCreated(LocalDate.now());
+		//Find the item by ID
 		Item item = iservice.getItem(itemId);
 		
+		//Create an order Item
 		OrderItem itemRow = new OrderItem(order, item, 1);
 		
+		//Add the order item to the list
 		orderItems.add(itemRow);
+		
+		//Create the order in the service
 		oservice.create(order);
+		
+		//Add the orderItem to the orderItem service
 		oiservice.add(itemRow);
 		
 		
@@ -58,8 +67,10 @@ public class OrderController {
 		return "redirect:../menu";
 	}
 	
+	//View the cart to see what has been added to the order
 	@GetMapping(value = "/cart")
 	public String goToCart(Model model) {
+		
 		oservice.create(order);
 		order.setOrderItems(orderItems);
 		model.addAttribute("orderitems", order.getOrderItems());
@@ -70,9 +81,13 @@ public class OrderController {
 		return "cart";
 	}
 	
+	//Confirm the order
 	@GetMapping(value = "/checkout")
 	public String checkout(Model model) {
-		
+		//Saves each item in the orderItems list to the orderItems repository
+		for(OrderItem item : orderItems) {
+			oiservice.update(item);
+		}
 		model.addAttribute("orderNo", order.getOrderId());
 		oservice.update(order);
 		order = new Order();
@@ -80,6 +95,7 @@ public class OrderController {
 		return "checkout";
 	}
 	
+	//Cancel the order
 	@GetMapping(value = "/cancel")
 	public String cancel(Model model) {
 		orderItems.clear();
