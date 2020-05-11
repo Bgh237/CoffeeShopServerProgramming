@@ -16,6 +16,11 @@
 	
 	<div>
 		<form th:object ="${rota}"th:action="@{../saverota}" action="#"	method="post">
+			<label for="emplist">Employee</label>
+			 <select id="emplist" th:field="*{employee}" class="form-control">
+       			<option th:if="${employee.role == 'MANAGER' or employee.role == 'EMPLOYEE'}"th:each="employee: ${employees}" th:value="${employee.id}" th:text="${employee.firstName} + ' ' + ${employee.surname}"></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="hidden" id="id" th:field="*{id}" />
 			<label for="mon">Monday</label>
 			<input type ="text"id="mon" th:field="*{mon}" /><br>

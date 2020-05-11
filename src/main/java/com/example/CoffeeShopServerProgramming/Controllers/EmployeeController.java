@@ -130,7 +130,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/deleterota/{id}", method = RequestMethod.GET)
 	public String deleteRota(@PathVariable("id") Long rotaId, Model model) {
 		rrepository.deleteById(rotaId);
-		return "redirect:../rota";
+		return "redirect:../rotas";
 	}
 	
 	//Edit the rota. Can only be done by MANAGER
@@ -145,7 +145,7 @@ public class EmployeeController {
 	@RequestMapping(value="/saverota", method = RequestMethod.POST)
 	public String saveRota(Rota rota){
 		rrepository.save(rota);
-		return "redirect:rotas";
+		return "redirect:../rotas";
 	}
 
 }
