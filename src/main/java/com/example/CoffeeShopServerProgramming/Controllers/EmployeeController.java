@@ -145,7 +145,7 @@ public class EmployeeController {
 	@RequestMapping(value="/saverota", method = RequestMethod.POST)
 	public String saveRota(Rota rota){
 		rrepository.save(rota);
-		return "redirect:rota";
+		return "redirect:rotas";
 	}
 
 }
