@@ -53,10 +53,10 @@ public class OrderController {
 		orderItems.add(itemRow);
 		
 		//Create the order in the service
-		oservice.create(order);
+		//oservice.create(order);
 		
 		//Add the orderItem to the orderItem service
-		oiservice.add(itemRow);
+		//oiservice.add(itemRow);
 		
 		
 		/*if(oservice.getAllOrders() == null) {
@@ -71,7 +71,10 @@ public class OrderController {
 	@GetMapping(value = "/cart")
 	public String goToCart(Model model) {
 		
-		oservice.create(order);
+		/*oservice.create(order);
+		for(OrderItem item : orderItems) {
+			oiservice.add(item);
+		}*/
 		order.setOrderItems(orderItems);
 		model.addAttribute("orderitems", order.getOrderItems());
 		model.addAttribute("total", order.getTotalOrderPrice());
@@ -84,9 +87,12 @@ public class OrderController {
 	//Confirm the order
 	@GetMapping(value = "/checkout")
 	public String checkout(Model model) {
-		
+		oservice.create(order);
+		for(OrderItem item : orderItems) {
+			oiservice.add(item);
+		}
 		model.addAttribute("orderNo", order.getOrderId());
-		oservice.update(order);
+		//oservice.update(order);
 		order = new Order();
 		orderItems.clear();
 		return "checkout";
