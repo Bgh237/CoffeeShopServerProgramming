@@ -62,15 +62,5 @@ public class RESTController {
 	public @ResponseBody List<Rota> rotaRest() {
 		return (List<Rota>) rrepo.findAll();
 	}
-	
-	/*@RequestMapping(value="/order", method= RequestMethod.GET)
-	public @ResponseBody List<Order> orderRest() {
-		return (List<Order>) orepo.findAll();
-	}
-	
-	@RequestMapping(value="/order/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional<Order> findOrderRest(@PathVariable("id") Long orderId) {
-		return orepo.findById(orderId);
-	}*/
 
 }
